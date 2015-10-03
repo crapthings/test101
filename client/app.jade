@@ -1,0 +1,47 @@
+body
+
+
+template(name='layout')
+
+	nav
+		a(href='/') home
+		a(href='/authors') authors
+		a(href='/posts') posts
+		a(href='/books') books
+
+	+Template.dynamic template=main
+
+template(name='home')
+
+	h3= title
+	each posts
+		h3 {{title}}
+		p {{content}}
+
+template(name='authors')
+
+	h3= title
+
+template(name='posts')
+
+	h3= title
+
+template(name='books')
+
+	h3= title
+
+	table
+		thead
+			tr
+				th 日期
+				th 作者
+				th 标题
+				th 价格
+
+		tbody
+			each books
+				tr
+					td {{formatDate createdAt 'YYYY.MM.DD'}}
+					td {{author}}
+					td {{content}}
+					td {{amount}}
